@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+{% load static %} 
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock title %}</title>
+    
+    <link rel="stylesheet" href="{% static '/ecom/css/bootstrap.min.css' %}"> 
+
+        <style>{% block style %}{% endblock style %}</style>
+</head>
+
+<body>
+    <nav class="navbar sticky-top navbar-expand-lg bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="{% url 'home' %}">
+                <img src="{% static 'background/logo.jpg' %}" alt="Logo" width="40" height="44"
+                    class="d-inline-block align-text-top">
+                
+            </a>
+            <a class="navbar-brand" href="{% url 'home' %}">Drive</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link {% block homeactive %}{% endblock homeactive %}" aria-current="page"
+                            href="{% url 'home' %}">Home</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            Dropdown
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="{% url 'fashion' %}">Men fashion</a></li>
+                            <li><a class="dropdown-item" href="{% url 'accessories' %}">Men accessorize</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="{% url 'electronic' %}">Electronic items</a></li>
+                        </ul>
+                    </li>
+                    
+                    <li class="nav-item">
+                        <a class="nav-link {% block productactive %}{% endblock productactive %}" href="{% url 'product' %}">Products</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {% block cartactive %}{% endblock cartactive %}" href="{% url 'cart' %}">Cart</a>
+                    </li>
+                </ul>
+                <form class="d-flex" role="search">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success me-3" type="submit">Search</button>
+                </form>
+                <button class="btn btn-outline-success" type="button" data-bs-toggle="offcanvas"
+                    data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">Your account</button>
+
+                
+            </div>
+        </div>
+    </nav>
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight"
+                    aria-labelledby="offcanvasRightLabel">
+                    <div class="offcanvas-header">
+                        <h4 class="offcanvas-title" id="offcanvasRightLabel">Your account</h4>
+                        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                    </div>
+                    <div class="offcanvas-body">
+                        <img class="rounded-circle" src="{% static '' %}" alt="Logo" width="140" height="140">
+                        <h3>Hey.user</h3>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item mt-4"><a href="" class="text-dark text-decoration-none">Logout</a></li>
+                            <li class="list-group-item mt-4"><a href="" class="text-dark text-decoration-none">Logout</a></li>
+                            <li class="list-group-item mt-4"><a href="" class="text-dark text-decoration-none">Logout</a></li>
+                            <li class="list-group-item mt-4"><a href="" class="text-dark text-decoration-none">Logout</a></li>
+                            <li class="list-group-item mt-4"><a href="" class="text-dark text-decoration-none"><h5>Logout</h5></a></li>
+                          </ul>
+                    </div>
+                </div>
+    {% block body %}
+
+
+    {% endblock body %}
+    
+    <script src="{% static '/ecom/js/bootstrap.bundle.min.js' %}"></script> 
+</body>
+
+</html>
